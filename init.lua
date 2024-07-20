@@ -70,7 +70,13 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Terminal
-vim.opt.shell = 'fish'
+
+if vim.fn.executable 'nu' then
+  vim.opt.shell = 'nu'
+else
+  vim.opt.shell = 'fish'
+end
+
 vim.opt.termguicolors = true
 
 vim.keymap.set('n', '<leader>t', '<cmd>split<cr><cmd>term<cr>', { desc = 'Open a [T]erminal in vsplit' })
