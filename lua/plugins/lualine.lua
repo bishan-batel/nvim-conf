@@ -20,7 +20,9 @@ return {
       },
       lualine_b = {},
       lualine_c = {},
-      lualine_x = {},
+      lualine_x = {
+        'overseer',
+      },
       lualine_y = {},
       lualine_z = {
         {
