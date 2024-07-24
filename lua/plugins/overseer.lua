@@ -1,6 +1,10 @@
 return {
   'stevearc/overseer.nvim',
   opts = {
+    templates = {
+      'builtin',
+      'user.cpp_build',
+    },
     task_list = {
       direction = 'bottom',
       bindings = {

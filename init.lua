@@ -60,7 +60,11 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = {
+  tab = '  ',
+  trail = '·',
+  nbsp = '␣',
+}
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -140,6 +144,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+require 'minecraft'
 
 -- Install `lazy.nvim` plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -319,7 +325,6 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         gopls = {},
-        pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -329,6 +334,14 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         --
+
+        biome = {
+          filetypes = {
+            'json',
+            'jsonc',
+            'mcmeta',
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -489,6 +502,7 @@ require('lazy').setup({
 
         formatting = {
           fields = { 'abbr', 'kind', 'menu' },
+          expandable_indicator = true,
           format = function(entry, vim_item)
             -- if vim.tbl_contains({ 'path' }, entry.source.name) then
             --   local icon, hl_group = devicons.get_icon(entry:get_completion_item().label)
@@ -663,7 +677,7 @@ require('lazy').setup({
         enable = true,
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = { enable = true, disable = { 'ruby', 'cpp', 'c++' } },
       incremental_selection = {
         enable = true,
       },
