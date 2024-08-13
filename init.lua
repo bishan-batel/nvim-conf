@@ -4,6 +4,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
+--
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -11,16 +12,18 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
+
 vim.opt.relativenumber = true
+
+vim.o.exrc = true
+
+vim.cmd 'set rnu'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
-
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
@@ -41,7 +44,6 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
@@ -85,7 +87,7 @@ end
 
 vim.opt.termguicolors = true
 
-vim.keymap.set('n', '<leader>t', '<cmd>split<cr><cmd>term<cr>', { desc = 'Open a [T]erminal in vsplit' })
+-- vim.keymap.set('n', '<leader>t', '<cmd>split<cr><cmd>term<cr>', { desc = 'Open a [T]erminal in vsplit' })
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -128,7 +130,13 @@ vim.keymap.set('v', '<C-c>', '"+y', { desc = 'Copy from system clipboard' })
 vim.keymap.set('i', '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
 
 -- Exit Terminal Mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+vim.keymap.set('t', '<C-h>', [[<cmd>wincmd h<cr>]], { buffer = 0, desc = 'Move focus to the left widnow' })
+vim.keymap.set('t', '<C-j>', [[<cmd>wincmd j<cr>]], { buffer = 0, desc = 'Move focus to the lower widnow' })
+vim.keymap.set('t', '<C-k>', [[<cmd>wincmd k<cr>]], { buffer = 0, desc = 'Move focus to the upper widnow' })
+vim.keymap.set('t', '<C-l>', [[<cmd>wincmd l<cr>]], { buffer = 0, desc = 'Move focus to the right widnow' })
+vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], { buffer = 0, desc = 'Window Prefix' })
 
 --  `:help wincmd`
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -363,9 +371,9 @@ require('lazy').setup({
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua',
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed, auto_update = true, run_on_start = true }
 
       require('mason-lspconfig').setup {
         handlers = {
@@ -624,7 +632,12 @@ require('lazy').setup({
         cmp = true,
         gitsigns = true,
         treesitter = true,
-        notify = false,
+        barbecue = {
+          dim_dirname = true, -- directory name is dimmed by default
+          bold_basename = true,
+          dim_context = false,
+          alt_background = false,
+        },
         dap = true,
         dap_ui = true,
         neotree = true,
@@ -669,6 +682,9 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = {
+      { 'nushell/tree-sitter-nu' },
+    },
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
@@ -703,15 +719,15 @@ require('lazy').setup({
   --   opts = {},
   -- },
 
-  { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
-  -- { '~/code/gooscript/tree-sitter/' },
+  -- { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
+  { dir = '~/code/gooscript/tree-sitter/' },
+  { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
   { 'karb94/neoscroll.nvim', opts = {} },
   { 'wakatime/vim-wakatime', lazy = false },
+  require 'plugins.tmux',
   require 'plugins.lualine',
-
   require 'plugins.dashboard',
-  --
   require 'plugins.telescope',
   require 'plugins.debug',
   require 'plugins.lint',
@@ -719,7 +735,13 @@ require('lazy').setup({
   require 'plugins.neo-tree',
   --  require 'plugins.notify',
   require 'plugins.noice',
-  require 'plugins.overseer',
+  require 'plugins.tasks.overseer',
+  require 'plugins.tasks.compiler',
+  require 'plugins.toggleterm',
+  require 'plugins.hardtime',
+  require 'plugins.sessions',
+  require 'plugins.barbecue',
+  require 'plugins.latex',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
