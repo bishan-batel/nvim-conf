@@ -721,7 +721,7 @@ require('lazy').setup({
 
   -- { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
   { dir = '~/code/gooscript/tree-sitter/' },
-  { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
+  -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
   { 'karb94/neoscroll.nvim', opts = {} },
   { 'wakatime/vim-wakatime', lazy = false },
