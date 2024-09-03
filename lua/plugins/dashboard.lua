@@ -106,7 +106,7 @@ return {
       -- dashboard.button('t', '  Find text', ':Telescope live_grep <CR>'),
       -- dashboard.button('r', '󰄉  Recent files', ':Telescope oldfiles <CR>'),
       dashboard.button('u', '󱐥  Update plugins', '<cmd>Lazy update<CR>'),
-      dashboard.button('c', '  Settings', '<cmd>cd $HOME/,.config/nvim<cr><cmd>e init.lua<cr>'),
+      -- dashboard.button('c', '  Settings', '<cmd>cd $HOME/,.config/nvim<cr><cmd>e init.lua<cr>'),
       -- dashboard.button('p', '  Projects', ':e $HOME/Documents/github <CR>'),
       dashboard.button('n', '󱗼  Nixos', '<cmd>cd $HOME/nixos<cr><cmd>e .<cr>'),
       dashboard.button('q', '󰿅  Quit', '<cmd>qa<CR>'),

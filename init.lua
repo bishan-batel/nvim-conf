@@ -270,8 +270,8 @@ require('lazy').setup({
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
+          map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           map('<M-o>', '<cmd>ClangdSwitchSourceHeader<cr>', '[G]oto [D]eclaration')
@@ -742,6 +742,7 @@ require('lazy').setup({
   require 'plugins.sessions',
   require 'plugins.barbecue',
   require 'plugins.latex',
+  require 'plugins.harpoon',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.

@@ -36,7 +36,21 @@ return {
             separator = { right = '' },
           },
         },
-        lualine_c = { 'diagnostics' },
+        lualine_c = {
+          'diagnostics',
+
+          {
+            'buffers',
+            use_mode_colors = true,
+            filetype_names = {
+              TelescopePrompt = 'Telescope',
+              dashboard = 'Dashboard',
+              packer = 'Packer',
+              fzf = 'FZF',
+              alpha = 'Alpha',
+            },
+          },
+        },
         lualine_x = {
           'overseer',
         },
