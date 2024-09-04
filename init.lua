@@ -654,7 +654,15 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = true } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = true },
+    keys = {
+      { '<leader>st', '<cmd>TodoTelescope<cr>' },
+    },
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -733,7 +741,6 @@ require('lazy').setup({
   require 'plugins.lint',
   require 'plugins.autopairs',
   require 'plugins.neo-tree',
-  --  require 'plugins.notify',
   require 'plugins.noice',
   require 'plugins.tasks.overseer',
   require 'plugins.tasks.compiler',
@@ -742,12 +749,12 @@ require('lazy').setup({
   require 'plugins.sessions',
   require 'plugins.barbecue',
   require 'plugins.latex',
-  require 'plugins.harpoon',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'plugins.harpoon.harpoon',
+  require 'plugins.harpoon.lualine',
+  require 'plugins.lazy_dev',
 
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  require 'plugins.lsp.trouble',
+  require 'plugins.lsp.debugger',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

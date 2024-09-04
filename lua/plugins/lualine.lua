@@ -37,8 +37,7 @@ return {
           },
         },
         lualine_c = {
-          'diagnostics',
-
+          lualine_c = { 'harpoon2' },
           {
             'buffers',
             use_mode_colors = true,
@@ -54,7 +53,9 @@ return {
         lualine_x = {
           'overseer',
         },
-        lualine_y = {},
+        lualine_y = {
+          'diagnostics',
+        },
         lualine_z = {
           {
             require('auto-session.lib').current_session_name,
