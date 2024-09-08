@@ -3,6 +3,7 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons',
     'rmagatti/auto-session',
+    'yavorski/lualine-macro-recording.nvim',
   },
   config = function()
     local mocha = require 'catppuccin.palettes.mocha'
@@ -37,18 +38,8 @@ return {
           },
         },
         lualine_c = {
-          lualine_c = { 'harpoon2' },
-          {
-            'buffers',
-            use_mode_colors = true,
-            filetype_names = {
-              TelescopePrompt = 'Telescope',
-              dashboard = 'Dashboard',
-              packer = 'Packer',
-              fzf = 'FZF',
-              alpha = 'Alpha',
-            },
-          },
+          'harpoon2',
+          { 'macro_recording', '%s' },
         },
         lualine_x = {
           'overseer',
