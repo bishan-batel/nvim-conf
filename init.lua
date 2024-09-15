@@ -1,3 +1,4 @@
+-- function()
 -- Set <space> as the leader key
 -- See `:help mapleader`
 vim.g.mapleader = ' '
@@ -75,15 +76,17 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
 
 -- Terminal
 
-if vim.fn.executable 'nu' == 1 then
-  vim.opt.shell = 'nu'
-else
-  vim.opt.shell = 'fish'
-end
+-- if vim.fn.executable 'nu' == 1 then
+--   vim.opt.shell = 'nu'
+-- else
+--   vim.opt.shell = 'fish'
+-- end
+
+vim.opt.shell = 'nu'
 
 vim.opt.termguicolors = true
 
@@ -170,7 +173,7 @@ require('lazy').setup({
   require 'plugins.telescope',
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  -- { 'numToStr/Comment.nvim', opts = {} },
 
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -230,6 +233,7 @@ require('lazy').setup({
       { 'j-hui/fidget.nvim', opts = {} },
 
       { 'smjonas/inc-rename.nvim', opts = {} },
+      { 'SmiteshP/nvim-navic' },
     },
     config = function()
       --    function will be executed to configure the current buffer
@@ -287,6 +291,11 @@ require('lazy').setup({
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          if client and client.server_capabilities.documentSymbolProvider then
+            require('nvim-navic').attach(client, event.buf)
+          end
+
           if client and client.server_capabilities.documentHighlightProvider then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -681,7 +690,10 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      require('mini.move').setup()
+      -- require('mini.indentscope').setup()
+      require('mini.comment').setup()
+
+      -- require('mini.move').setup()
 
       require('mini.icons').setup { style = 'glyph', extension = { 'goo', glyph = '󱗆', hl = 'MiniIconsRed' } }
     end,
@@ -694,7 +706,7 @@ require('lazy').setup({
     },
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
+      -- Autoinstall languages that are not installedinit
       auto_install = true,
       highlight = {
         enable = true,
@@ -730,8 +742,9 @@ require('lazy').setup({
   { dir = '~/code/gooscript/tree-sitter/' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
-  { 'karb94/neoscroll.nvim', opts = {} },
+  { 'karb94/neoscroll.nvim', opts = { easing = 'quadratic' } },
   { 'wakatime/vim-wakatime', lazy = false },
+  { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
   require 'plugins.tmux',
   require 'plugins.lualine',
   require 'plugins.dashboard',
@@ -750,6 +763,8 @@ require('lazy').setup({
   require 'plugins.harpoon.harpoon',
   require 'plugins.harpoon.lualine',
   require 'plugins.lazy_dev',
+
+  require 'plugins.docs',
 
   require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',

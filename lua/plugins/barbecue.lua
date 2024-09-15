@@ -9,7 +9,7 @@ return {
   config = function()
     require('barbecue').setup {
       theme = 'catppuccin',
-      create_autocmd = false,
+      create_autocmd = true,
       exclude_filetypes = { 'netrw', 'toggleterm', 'neo-tree' },
       dim_dirname = true,
       bold_basename = true,
@@ -18,6 +18,8 @@ return {
     }
     -- triggers CursorHold event faster
     vim.opt.updatetime = 200
+
+    require('barbecue.ui').toggle(true)
 
     vim.api.nvim_create_autocmd({
       'WinScrolled', -- or WinResized on NVIM-v0.9 and higher
