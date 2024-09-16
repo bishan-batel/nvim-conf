@@ -6,11 +6,16 @@ return {
   opts = {
     delete_to_trash = true,
   },
-  kets = {
+  keys = {
     {
       '-',
       '<cmd>Oil<cr>',
       desc = 'Open Parent Directory',
     },
+    {
+      '<leader>-',
+      function() require('oil').open_float() end,
+      desc = 'Open Parent Directory'
+    }
   },
 }
