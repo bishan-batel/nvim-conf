@@ -175,18 +175,7 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   -- { 'numToStr/Comment.nvim', opts = {} },
 
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
+  require 'plugins.git',
 
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
@@ -751,7 +740,6 @@ require('lazy').setup({
   require 'plugins.debug',
   require 'plugins.lint',
   require 'plugins.autopairs',
-  require 'plugins.neo-tree',
   require 'plugins.noice',
   require 'plugins.tasks.overseer',
   require 'plugins.tasks.compiler',
@@ -768,6 +756,9 @@ require('lazy').setup({
 
   require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',
+
+  require 'plugins.fs.oil',
+  require 'plugins.fs.neo-tree',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
