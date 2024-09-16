@@ -1,11 +1,11 @@
 return {
   'stevearc/oil.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  opts = {
-    delete_to_trash = true,
-  },
+  config = function()
+    require('oil').setup {
+      delete_to_trash = true,
+    }
+  end,
   keys = {
     {
       '-',
@@ -14,8 +14,10 @@ return {
     },
     {
       '<leader>-',
-      function() require('oil').open_float() end,
-      desc = 'Open Parent Directory'
-    }
+      function()
+        require('oil').open_float()
+      end,
+      desc = 'Open Parent Directory',
+    },
   },
 }
