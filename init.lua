@@ -168,6 +168,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]] (Lazy)
 require('lazy').setup({
+  require 'plugins.fs.oil',
+  require 'plugins.fs.neo-tree',
+
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   require 'plugins.telescope',
@@ -777,9 +780,6 @@ require('lazy').setup({
 
   require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',
-
-  require 'plugins.fs.oil',
-  require 'plugins.fs.neo-tree',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
