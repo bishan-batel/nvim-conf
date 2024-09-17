@@ -35,6 +35,10 @@ return {
       toggle_telescope(harpoon:list())
     end, { desc = 'Op[e]n Harpoon Window' })
 
+    vim.keymap.set('n', '<leader>E', function()
+      require('harpoon.cmd-ui').toggle_quick_menu()
+    end, { desc = 'Op[e]n Harpoon Window' })
+
     vim.keymap.set('n', 'H', function()
       harpoon:list():prev()
     end, { desc = 'Previous Buffer in [H]arpoon List' })
@@ -49,7 +53,7 @@ return {
       end, { desc = string.format('Select Harpoon Buffer [%s]', i) })
 
       vim.keymap.set('n', string.format('<leader>d%d', i), function()
-        harpoon:list():remove(i)
+        harpoon:list():remove_at(i)
       end, { desc = string.format('Remove Harpoon Buffer [%s]', i) })
     end
   end,
