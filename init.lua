@@ -633,7 +633,6 @@ require('lazy').setup({
         cmp = true,
         gitsigns = true,
         treesitter = true,
-        trouble = true,
         barbecue = {
           dim_dirname = true, -- directory name is dimmed by default
           bold_basename = true,
