@@ -620,6 +620,8 @@ require('lazy').setup({
     init = function()
       vim.cmd.colorscheme 'catppuccin-mocha'
       vim.cmd.hi 'Comment gui=none'
+
+      vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#585b70', italic = true })
     end,
     opts = {
       flavour = 'mocha',
@@ -629,6 +631,7 @@ require('lazy').setup({
         cmp = true,
         gitsigns = true,
         treesitter = true,
+        trouble = true,
         barbecue = {
           dim_dirname = true, -- directory name is dimmed by default
           bold_basename = true,
@@ -645,7 +648,24 @@ require('lazy').setup({
           enabled = true,
           indentscope_color = '',
         },
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+        native_lsp = {
+          enabled = true,
+          virtual_text = {
+            errors = { 'italic' },
+            hints = { 'italic' },
+            warnings = { 'italic' },
+            information = { 'italic' },
+            ok = { 'italic' },
+          },
+          underlines = {
+            errors = { 'underline' },
+            hints = { 'underline' },
+            warnings = { 'underline' },
+            information = { 'underline' },
+            ok = { 'underline' },
+          },
+          inlay_hints = { background = false, italic = true },
+        },
       },
     },
   },
