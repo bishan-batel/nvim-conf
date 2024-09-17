@@ -271,8 +271,8 @@ require('lazy').setup({
 
           map('<M-o>', '<cmd>ClangdSwitchSourceHeader<cr>', '[G]oto [D]eclaration')
 
-          require('clangd_extensions.inlay_hints').setup_autocmd()
-          require('clangd_extensions.inlay_hints').set_inlay_hints()
+          -- require('clangd_extensions.inlay_hints').setup_autocmd()
+          -- require('clangd_extensions.inlay_hints').set_inlay_hints()
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -313,6 +313,8 @@ require('lazy').setup({
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
             end, '[T]oggle Inlay [H]ints')
+
+            vim.lsp.inlay_hint.enable(true)
           end
         end,
       })
@@ -386,7 +388,7 @@ require('lazy').setup({
       }
     end,
   },
-  { 'p00f/clangd_extensions.nvim' },
+  -- { 'p00f/clangd_extensions.nvim' },
   require 'plugins.lazy_dev',
 
   { -- Autoformat
