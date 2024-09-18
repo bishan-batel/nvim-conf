@@ -32,11 +32,12 @@ return {
     end, { desc = '[A]dd to harpoon list' })
 
     vim.keymap.set('n', '<leader>e', function()
-      toggle_telescope(harpoon:list())
+      harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = 'Op[e]n Harpoon Window' })
 
     vim.keymap.set('n', '<leader>E', function()
-      require('harpoon.cmd-ui').toggle_quick_menu()
+      toggle_telescope(harpoon:list())
+      -- require('harpoon.cmd-ui').toggle_quick_menu()
     end, { desc = 'Op[e]n Harpoon Window' })
 
     vim.keymap.set('n', 'H', function()

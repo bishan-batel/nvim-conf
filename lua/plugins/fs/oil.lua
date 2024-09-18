@@ -6,6 +6,7 @@ return {
       delete_to_trash = true,
     }
   end,
+  lazy = false,
   keys = {
     {
       '-',
