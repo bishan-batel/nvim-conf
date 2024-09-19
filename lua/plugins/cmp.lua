@@ -34,6 +34,7 @@ return { -- Autocompletion
     'hrsh7th/cmp-nvim-lsp-signature-help',
     'onsails/lspkind.nvim',
     'chrisgrieser/cmp-nerdfont',
+    'rcarriga/cmp-dap',
   },
   config = function()
     -- See `:help cmp`
@@ -181,6 +182,12 @@ return { -- Autocompletion
           },
         },
       }),
+    })
+
+    cmp.setup.filetype({ 'dap-repl', 'dapui_watches', 'dapui_hover' }, {
+      sources = {
+        { name = 'dap' },
+      },
     })
   end,
 }
