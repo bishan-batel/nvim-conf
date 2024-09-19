@@ -232,7 +232,7 @@ require('lazy').setup({
     end,
     opts = {
       flavour = 'mocha',
-      transparent_background = true,
+      transparent_background = not vim.g.neovide,
       term_colors = true,
       integrations = {
         cmp = true,
