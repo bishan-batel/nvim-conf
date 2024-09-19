@@ -232,7 +232,7 @@ require('lazy').setup({
     end,
     opts = {
       flavour = 'mocha',
-      transparent_background = false,
+      transparent_background = true,
       term_colors = true,
       integrations = {
         cmp = true,
