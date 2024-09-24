@@ -129,13 +129,20 @@ return { -- LSP Configuration & Plugins
         settings = {},
         mason = false,
       },
-      rust_analyzer = {},
+      rust_analyzer = {
+        mason = false,
+      },
       biome = {
         filetypes = {
           'json',
           'jsonc',
           'mcmeta',
         },
+      },
+
+      pylsp = {
+        mason = false,
+        settings = {},
       },
 
       lua_ls = {
