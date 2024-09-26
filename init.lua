@@ -108,6 +108,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Neovide
 if vim.g.neovide then
   vim.opt.guifont = 'JetBrainsMono Nerd Font:20'
+  vim.g.neovide_cursor_vfx_mode = 'sonicboom'
 
   local alpha = function()
     return string.format('%x', math.floor(255 * (vim.g.transparency or 0.8)))
