@@ -8,12 +8,13 @@ return {
       -- Only one of these is needed.
       'nvim-telescope/telescope.nvim', -- optional
     },
-    config = true,
+    lazy = true,
+    cmd = { 'Neogit' },
     opts = { graph_style = 'kitty' },
   },
   {
     'lewis6991/gitsigns.nvim',
-    lazy = false,
+    event = 'BufEnter',
     opts = {
       signs = {
         add = { text = '┃' },

@@ -3,8 +3,6 @@ return {
   opts = {
     templates = {
       'builtin',
-      'cmake_build',
-      'cmake_build_release',
     },
     task_list = {
       direction = 'bottom',
@@ -33,6 +31,7 @@ return {
       },
     },
   },
+  lazy = true,
   keys = {
     {
       '<leader>ot',
@@ -52,6 +51,7 @@ return {
       desc = '[O]verseer: [R]un Quick Action',
     },
     {
+
       '<leader>ol',
       function()
         local overseer = require 'overseer'

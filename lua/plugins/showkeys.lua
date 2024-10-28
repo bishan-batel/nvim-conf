@@ -1,1 +1,5 @@
-return { "nvchad/showkeys", cmd = "ShowkeysToggle" }
+return {
+  'nvchad/showkeys',
+  winopts = {},
+  cmd = 'ShowkeysToggle',
+}

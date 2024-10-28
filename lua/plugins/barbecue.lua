@@ -19,7 +19,7 @@ return {
     -- triggers CursorHold event faster
     vim.opt.updatetime = 200
 
-    require('barbecue.ui').toggle(true)
+    -- require('barbecue.ui').toggle(true)
 
     vim.api.nvim_create_autocmd({
       'WinScrolled', -- or WinResized on NVIM-v0.9 and higher

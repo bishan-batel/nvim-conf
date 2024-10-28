@@ -222,61 +222,7 @@ require('lazy').setup({
   },
 
   require 'plugins.cmp',
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
-      vim.cmd.hi 'Comment gui=none'
-
-      vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#585b70', italic = true })
-    end,
-    opts = {
-      flavour = 'mocha',
-      transparent_background = not not vim.g.neovide,
-      term_colors = true,
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        treesitter = true,
-        barbecue = {
-          dim_dirname = true, -- directory name is dimmed by default
-          bold_basename = true,
-          dim_context = false,
-          alt_background = false,
-        },
-        dap = true,
-        dap_ui = true,
-        neotree = true,
-        overseer = true,
-        which_key = true,
-        dashboard = true,
-        mini = {
-          enabled = true,
-          indentscope_color = '',
-        },
-        native_lsp = {
-          enabled = true,
-          virtual_text = {
-            errors = { 'italic' },
-            hints = { 'italic' },
-            warnings = { 'italic' },
-            information = { 'italic' },
-            ok = { 'italic' },
-          },
-          underlines = {
-            errors = { 'underline' },
-            hints = { 'underline' },
-            warnings = { 'underline' },
-            information = { 'underline' },
-            ok = { 'underline' },
-          },
-          inlay_hints = { background = false },
-        },
-      },
-    },
-  },
+  require 'theming.catppuccin',
 
   -- Highlight todo, notes, etc in comments
   {
@@ -288,8 +234,6 @@ require('lazy').setup({
       { '<leader>st', '<cmd>TodoTelescope<cr>' },
     },
   },
-  require 'plugins.mini',
-
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -325,10 +269,6 @@ require('lazy').setup({
 
   require 'plugins.markdown.markdown',
   require 'plugins.markdown.obsidian',
-  -- {
-  --   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  --   opts = {},
-  -- },
 
   -- { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
   { dir = '~/code/gooscript/tree-sitter/' },
@@ -337,11 +277,12 @@ require('lazy').setup({
   { 'karb94/neoscroll.nvim', opts = { easing = 'quadratic' } },
   { 'wakatime/vim-wakatime', lazy = false },
   { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
+
+  require 'plugins.mini',
+
   require 'plugins.tmux',
   require 'plugins.lualine',
   require 'plugins.dashboard',
-  require 'plugins.debug',
-  require 'plugins.lint',
   require 'plugins.autopairs',
   require 'plugins.noice',
   require 'plugins.tasks.overseer',
@@ -350,12 +291,12 @@ require('lazy').setup({
   require 'plugins.hardtime',
   require 'plugins.sessions',
   require 'plugins.barbecue',
-  require 'plugins.latex',
   require 'plugins.harpoon.harpoon',
   require 'plugins.harpoon.lualine',
   require 'plugins.lazy_dev',
 
   require 'plugins.docs',
+
   require 'plugins.minty',
   require 'plugins.showkeys',
 
