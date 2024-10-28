@@ -109,12 +109,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 if vim.g.neovide then
   vim.opt.guifont = 'JetBrainsMono Nerd Font:20'
   vim.g.neovide_cursor_vfx_mode = 'sonicboom'
+  vim.g.neovide_cursor_animation_length = 0.06
 
   local alpha = function()
-    return string.format('%x', math.floor(255 * (vim.g.transparency or 0.8)))
+    return string.format('%x', math.floor(255 * 0.97))
   end
 
-  vim.g.neovide_transparency = 0.85
+  vim.g.neovide_transparency = 0.97
   vim.g.neovide_background_color = '#0f1117' .. alpha()
 
   vim.keymap.set('n', '<C-=>', function()
@@ -233,7 +234,7 @@ require('lazy').setup({
     end,
     opts = {
       flavour = 'mocha',
-      transparent_background = not vim.g.neovide,
+      transparent_background = not not vim.g.neovide,
       term_colors = true,
       integrations = {
         cmp = true,
@@ -355,6 +356,8 @@ require('lazy').setup({
   require 'plugins.lazy_dev',
 
   require 'plugins.docs',
+  require 'plugins.minty',
+  require 'plugins.showkeys',
 
   require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',

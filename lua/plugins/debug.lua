@@ -9,6 +9,7 @@ return {
       'nvim-tree/nvim-web-devicons',
       'jay-babu/mason-nvim-dap.nvim',
     },
+    lazy = true,
     config = function()
       local dap = require 'dap'
 
@@ -69,5 +70,8 @@ return {
         ui.close()
       end
     end,
+    keys = {
+      '<leader>dc',
+    },
   },
 }
