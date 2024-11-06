@@ -120,8 +120,16 @@ return { -- LSP Configuration & Plugins
         settings = {},
         mason = false,
       },
-      rust_analyzer = {
+      ['rust-analyzer'] = {
         mason = false,
+        cmd = { 'rust-analyzer' },
+        settings = {
+          ['rust-analyzer'] = {
+            checkOnSave = {
+              command = 'clippy',
+            },
+          },
+        },
       },
       biome = {
         filetypes = {
@@ -152,7 +160,7 @@ return { -- LSP Configuration & Plugins
       },
     }
 
-    require('mason').setup()
+    require('mason').setup { PATH = 'append' }
 
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
