@@ -222,6 +222,7 @@ require('lazy').setup({
   },
 
   require 'plugins.cmp',
+  -- require 'plugins.blink',
   require 'theming.catppuccin',
 
   -- Highlight todo, notes, etc in comments
@@ -268,6 +269,7 @@ require('lazy').setup({
   },
 
   require 'plugins.markdown.markdown',
+  require 'plugins.markdown.math',
   require 'plugins.markdown.obsidian',
 
   -- { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
@@ -302,6 +304,13 @@ require('lazy').setup({
 
   require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',
+
+  {
+    'GustavEikaas/code-playground.nvim',
+    config = function()
+      require('code-playground').setup()
+    end,
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

@@ -62,7 +62,6 @@ return { -- Autocompletion
       view = {
         entries = 'custom',
       },
-      -- completion = { completeopt = 'menu,menuone,noinsert' },
 
       window = {
         completion = cmp.config.window.bordered(),
@@ -80,25 +79,17 @@ return { -- Autocompletion
 
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
-        expandable_indicator = true,
+        expandable_indicator = false,
         format = function(entry, vim_item)
-          -- if vim.tbl_contains({ 'path' }, entry.source.name) then
-          --   local icon, hl_group = devicons.get_icon(entry:get_completion_item().label)
-          --   if icon then
-          --     vim_item.kind = icon
-          --     vim_item.kind_hl_group = hl_group
-          --     return vim_item
-          --   end
-          -- end
           local kind = lspkind.cmp_format {
-            with_text = false,
+            with_text = true,
             mode = 'symbol_text',
             menu = {
-              buffer = '[Buffer]',
-              nvim_lsp = '[LSP]',
-              luasnip = '[LuaSnip]',
-              nvim_lua = '[Lua]',
-              latex_symbols = '[LaTeX]',
+              buffer = '',
+              nvim_lsp = '',
+              luasnip = '',
+              nvim_lua = '',
+              latex_symbols = '',
             },
           }(entry, vim_item)
 
