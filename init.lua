@@ -268,6 +268,8 @@ require('lazy').setup({
     end,
   },
 
+  require 'plugins.undo',
+
   require 'plugins.markdown.markdown',
   require 'plugins.markdown.math',
   require 'plugins.markdown.obsidian',
