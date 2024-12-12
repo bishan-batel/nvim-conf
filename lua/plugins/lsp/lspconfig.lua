@@ -118,12 +118,9 @@ return {
       local servers = {
         clangd = {
           cmd = { 'clangd', '--cross-file-rename' },
-          settings = {},
           mason = false,
         },
-        ['rust-analyzer'] = {
-          mason = false,
-          cmd = { 'rust-analyzer' },
+        rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
               checkOnSave = {
