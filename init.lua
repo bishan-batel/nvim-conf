@@ -274,7 +274,7 @@ require('lazy').setup({
   require 'plugins.markdown.math',
   require 'plugins.markdown.obsidian',
 
-  { dir = '~/code/moonbrain/', opts = {}, config = function() end },
+  { dir = '~/code/moonbrain-nvim/', opts = {}, config = function() end },
   -- { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
   { dir = '~/code/gooscript/tree-sitter/' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
@@ -307,6 +307,10 @@ require('lazy').setup({
 
   require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',
+  {
+    'IogaMaster/neocord',
+    event = 'VeryLazy',
+  },
 
   {
     'GustavEikaas/code-playground.nvim',
