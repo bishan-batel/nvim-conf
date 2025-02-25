@@ -279,7 +279,7 @@ require('lazy').setup({
   { dir = '~/code/gooscript/tree-sitter/' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
-  { 'karb94/neoscroll.nvim', opts = { easing = 'quadratic' } },
+  -- { 'karb94/neoscroll.nvim', opts = { easing = 'quadratic' } },
   { 'wakatime/vim-wakatime', lazy = false },
   { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
 
@@ -311,7 +311,7 @@ require('lazy').setup({
     'IogaMaster/neocord',
     event = 'VeryLazy',
   },
-
+  require 'plugins.snacks',
   {
     'GustavEikaas/code-playground.nvim',
     config = function()
