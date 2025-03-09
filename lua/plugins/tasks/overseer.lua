@@ -1,6 +1,8 @@
 return {
   'stevearc/overseer.nvim',
+  ---@type overseer.Config
   opts = {
+    dap = false,
     templates = {
       'builtin',
     },
@@ -31,7 +33,6 @@ return {
       },
     },
   },
-  lazy = true,
   keys = {
     {
       '<leader>ot',

@@ -1,12 +1,11 @@
 return {
   'stevearc/oil.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    require('oil').setup {
-      delete_to_trash = true,
-    }
-  end,
-  lazy = false,
+  opts = {
+    delete_to_trash = true,
+  },
+  event = "VimEnter",
+  lazy = true,
   keys = {
     {
       '-',

@@ -13,6 +13,7 @@ return {
       { 'smjonas/inc-rename.nvim', opts = {} },
       { 'SmiteshP/nvim-navic' },
     },
+    lazy = true,
     config = function()
       --    function will be executed to configure the current buffer
       vim.api.nvim_create_autocmd('LspAttach', {

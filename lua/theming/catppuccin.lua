@@ -9,6 +9,7 @@ return {
 
     vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#585b70', italic = true })
   end,
+  lazy = true,
   opts = {
     flavour = 'mocha',
     background = {

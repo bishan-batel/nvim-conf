@@ -1,6 +1,6 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
-  -- event = 'InsertEnter',
+  event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     {
@@ -36,6 +36,7 @@ return { -- Autocompletion
     'chrisgrieser/cmp-nerdfont',
     'rcarriga/cmp-dap',
   },
+  lazy = true,
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'

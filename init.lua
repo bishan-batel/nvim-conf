@@ -169,7 +169,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]] (Lazy)
-require('lazy').setup({
+require('lazy').setup {
   require 'plugins.telescope',
   require 'plugins.fs.oil',
   require 'plugins.fs.neo-tree',
@@ -238,11 +238,9 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    dependencies = {
-      { 'nushell/tree-sitter-nu' },
-    },
+    dependencies = {},
     opts = {
-      ensure_installed = { 'diff', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'diff', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'nu' },
       -- Autoinstall languages that are not installedinit
       auto_install = true,
       highlight = {
@@ -271,17 +269,14 @@ require('lazy').setup({
   require 'plugins.undo',
 
   require 'plugins.markdown.markdown',
-  require 'plugins.markdown.math',
   require 'plugins.markdown.obsidian',
 
-  { dir = '~/code/moonbrain-nvim/', opts = {}, config = function() end },
-  -- { 'bishan-batel/tree-sitter-gooscript', opts = {}, lazy = false },
-  { dir = '~/code/gooscript/tree-sitter/' },
+  { dir = '~/code/moonbrain-nvim/', opts = {}, ft = 'moonbrain' },
+  { dir = '~/code/gooscript/tree-sitter/', ft = 'gooscript' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
-  -- { 'karb94/neoscroll.nvim', opts = { easing = 'quadratic' } },
-  { 'wakatime/vim-wakatime', lazy = false },
-  { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
+  { 'wakatime/vim-wakatime', event = 'BufEnter' },
+  -- { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
 
   require 'plugins.mini',
 
@@ -291,54 +286,28 @@ require('lazy').setup({
   require 'plugins.autopairs',
   require 'plugins.noice',
   require 'plugins.tasks.overseer',
-  require 'plugins.tasks.compiler',
+  -- require 'plugins.tasks.compiler',
   require 'plugins.toggleterm',
-  require 'plugins.hardtime',
-  require 'plugins.sessions',
-  require 'plugins.barbecue',
+  -- require 'plugins.hardtime',
+  -- require 'plugins.sessions',
+  -- require 'plugins.barbecue',
   require 'plugins.harpoon.harpoon',
   require 'plugins.harpoon.lualine',
   require 'plugins.lazy_dev',
 
   require 'plugins.docs',
 
-  require 'plugins.minty',
+  -- require 'plugins.minty',
   require 'plugins.showkeys',
 
-  require 'plugins.lsp.trouble',
+  -- require 'plugins.lsp.trouble',
   require 'plugins.lsp.debugger',
   {
     'IogaMaster/neocord',
     event = 'VeryLazy',
   },
   require 'plugins.snacks',
-  {
-    'GustavEikaas/code-playground.nvim',
-    config = function()
-      require('code-playground').setup()
-    end,
-  },
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
