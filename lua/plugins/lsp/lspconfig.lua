@@ -117,10 +117,6 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
-        clangd = {
-          cmd = { 'clangd', '--cross-file-rename' },
-          mason = false,
-        },
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
@@ -161,13 +157,15 @@ return {
 
       require('mason').setup { PATH = 'append' }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua',
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed, auto_update = true, run_on_start = false }
+      require('mason-tool-installer').setup {
+        auto_update = true,
+        run_on_start = false,
+      }
 
       require('mason-lspconfig').setup {
+        automatic_installation = false,
+        auto_update = true,
+        ensure_installed = {},
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -179,6 +177,11 @@ return {
             require('lspconfig')[server_name].setup(server)
           end,
         },
+      }
+
+      require('lspconfig').clangd.setup {
+        cmd = { 'clangd', '--cross-file-rename', '--clang-tidy', '--background-index' },
+        mason = false,
       }
     end,
   },

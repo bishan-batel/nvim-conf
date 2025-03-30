@@ -1,7 +1,6 @@
 return {
   'akinsho/toggleterm.nvim',
-  version = '*',
-  lazy = true,
+  lazy = false,
   opts = {
     shell = 'nu',
     open_mapping = '<C-\\>',
@@ -13,6 +12,12 @@ return {
     },
     winbar = {
       enabled = true,
+    },
+  },
+  keys = {
+    {
+      '<C-\\>',
+      function() end,
     },
   },
 }
