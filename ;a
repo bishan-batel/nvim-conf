@@ -31,7 +31,6 @@ return
       chunk = {
         enabled = false,
       },
-      scope = { enabled = true },
     },
     lazygit = {},
     image = { enabled = true },

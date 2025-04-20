@@ -221,8 +221,8 @@ require('lazy').setup {
     },
   },
 
-  require 'plugins.cmp',
-  -- require 'plugins.blink',
+  -- require 'plugins.cmp',
+  require 'plugins.blink',
   require 'theming.catppuccin',
 
   -- Highlight todo, notes, etc in comments
@@ -271,7 +271,7 @@ require('lazy').setup {
   require 'plugins.markdown.markdown',
   require 'plugins.markdown.obsidian',
 
-  { dir = '~/code/moonbrain-nvim/', opts = {}, ft = 'moonbrain' },
+  { dir = '~/code/moonbrain-nvim/', opts = {}, ft = 'moonbrain', lazy = true },
   { dir = '~/code/gooscript/tree-sitter/', ft = 'gooscript' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
