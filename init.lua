@@ -87,6 +87,9 @@ vim.opt.scrolloff = 5
 -- end
 
 vim.opt.shell = 'nu'
+vim.opt.shellcmdflag = '-c'
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
 
 vim.opt.termguicolors = true
 
@@ -271,11 +274,11 @@ require('lazy').setup {
   require 'plugins.markdown.markdown',
   require 'plugins.markdown.obsidian',
 
-  { dir = '~/code/moonbrain-nvim/', opts = {}, ft = 'moonbrain', lazy = true },
+  { dir = '~/code/moonbrain-nvim/',        opts = {},         ft = 'moonbrain', lazy = true },
   { dir = '~/code/gooscript/tree-sitter/', ft = 'gooscript' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
-  { 'wakatime/vim-wakatime', event = 'BufEnter' },
+  { 'wakatime/vim-wakatime',               event = 'BufEnter' },
   -- { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
 
   require 'plugins.mini',
