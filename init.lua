@@ -118,7 +118,7 @@ if vim.g.neovide then
     return string.format('%x', math.floor(255 * 0.97))
   end
 
-  vim.g.neovide_transparency = 0.97
+  vim.g.neovide_opacity = 0.97
   vim.g.neovide_background_color = '#0f1117' .. alpha()
 
   vim.keymap.set('n', '<C-=>', function()
