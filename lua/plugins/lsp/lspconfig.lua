@@ -61,9 +61,6 @@ return {
 
           map('<M-o>', '<cmd>ClangdSwitchSourceHeader<cr>', '[G]oto [D]eclaration')
 
-          -- require('clangd_extensions.inlay_hints').setup_autocmd()
-          -- require('clangd_extensions.inlay_hints').set_inlay_hints()
-
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -113,7 +110,12 @@ return {
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+
       local servers = {
+        clangd = {
+          cmd = { 'clangd', '--cross-file-rename', '--clang-tidy', '--background-index' },
+          mason = false,
+        },
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
@@ -181,11 +183,6 @@ return {
             require('lspconfig')[server_name].setup(server)
           end,
         },
-      }
-
-      require('lspconfig').clangd.setup {
-        cmd = { 'clangd', '--cross-file-rename', '--clang-tidy', '--background-index' },
-        mason = false,
       }
     end,
   },
