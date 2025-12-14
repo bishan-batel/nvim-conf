@@ -110,7 +110,6 @@ return {
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-
       local servers = {
         clangd = {
           cmd = { 'clangd', '--cross-file-rename', '--clang-tidy', '--background-index' },
@@ -161,7 +160,9 @@ return {
         require('lspconfig')[server].setup(config)
       end
 
-      require('mason').setup { PATH = 'append' }
+      require('mason').setup {
+        PATH = 'append',
+      }
 
       require('mason-tool-installer').setup {
         auto_update = true,
@@ -186,14 +187,14 @@ return {
       }
     end,
   },
-  {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'LspAttach', -- Or `LspAttach`
-    priority = 1000, -- needs to be loaded in first
-    config = function()
-      require('tiny-inline-diagnostic').setup()
-    end,
-  },
+  -- {
+  --   'rachartier/tiny-inline-diagnostic.nvim',
+  --   event = 'LspAttach', -- Or `LspAttach`
+  --   priority = 1000, -- needs to be loaded in first
+  --   config = function()
+  --     require('tiny-inline-diagnostic').setup()
+  --   end,
+  -- },
   -- {
   --   'ray-x/lsp_signature.nvim',
   --   event = 'VeryLazy',
