@@ -137,6 +137,10 @@ return {
           settings = {},
         },
 
+        nil_ls = {
+          mason = false,
+        },
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
