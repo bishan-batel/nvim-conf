@@ -267,6 +267,10 @@ require('lazy').setup {
       vim.opt.foldlevelstart = 99
     end,
   },
+  {
+    "bezhermoso/tree-sitter-ghostty",
+    build = "make nvim_install",
+  },
 
   require 'plugins.undo',
 

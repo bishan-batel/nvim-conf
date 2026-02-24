@@ -16,7 +16,7 @@ return {
       dark = 'mocha',
     },
     term_colors = true,
-    transparent_background = false,
+    transparent_background = true,
     dim_inactive = {
       enabled = false, -- dims the background color of inactive window
       shade = 'dark',
@@ -25,13 +25,13 @@ return {
     styles = {
       comments = { 'italic' },
       conditionals = { 'italic' },
-      loops = {},
+      loops = { 'italic' },
       functions = {},
-      keywords = {},
+      keywords = { 'italic' },
       strings = {},
       variables = {},
       numbers = {},
-      booleans = {},
+      booleans = { 'italic' },
       properties = {},
       types = {},
       operators = {},
