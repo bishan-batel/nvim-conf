@@ -241,16 +241,17 @@ require('lazy').setup {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    dependencies = {},
+    tag = "v0.10.0",
+    lazy = false,
     opts = {
-      ensure_installed = { 'diff', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'nu' },
+      ensure_installed = { 'diff', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'nu', "cpp", "nix" },
       -- Autoinstall languages that are not installedinit
       auto_install = true,
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby', 'cpp', 'c++' } },
+      indent = { enable = true},
       incremental_selection = {
         enable = true,
       },
@@ -258,8 +259,6 @@ require('lazy').setup {
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
-      -- Prefer git instead of curl in order to improve connectivity in some environments
-      require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
 
@@ -274,8 +273,8 @@ require('lazy').setup {
   require 'plugins.markdown.markdown',
   require 'plugins.markdown.obsidian',
 
-  { dir = '~/code/moonbrain-nvim/',        opts = {},         ft = 'moonbrain', lazy = true },
-  { dir = '~/code/gooscript/tree-sitter/', ft = 'gooscript' },
+  -- { dir = '~/code/moonbrain-nvim/',        opts = {},         ft = 'moonbrain', lazy = true },
+  -- { dir = '~/code/gooscript/tree-sitter/', ft = 'gooscript' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
   { 'wakatime/vim-wakatime',               event = 'BufEnter' },
