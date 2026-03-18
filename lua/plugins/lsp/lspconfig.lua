@@ -59,7 +59,7 @@ return {
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          map('<M-o>', '<cmd>ClangdSwitchSourceHeader<cr>', '[G]oto [D]eclaration')
+          map('<M-o>', '<cmd>LspClangdSwitchSourceHeader<cr>', '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.

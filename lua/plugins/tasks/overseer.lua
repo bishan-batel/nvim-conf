@@ -55,12 +55,21 @@ return {
 
       '<leader>ol',
       function()
-        local overseer = require 'overseer'
-        local tasks = overseer.list_tasks { recent_first = true }
+        local overseer = require("overseer")
+        local task_list = require("overseer.task_list")
+        local tasks = overseer.list_tasks({
+          status = {
+            overseer.STATUS.SUCCESS,
+            overseer.STATUS.FAILURE,
+            overseer.STATUS.CANCELED,
+          },
+          sort = task_list.sort_finished_recently
+        })
         if vim.tbl_isempty(tasks) then
-          vim.notify('No tasks found', vim.log.levels.WARN)
+          vim.notify("No tasks found", vim.log.levels.WARN)
         else
-          overseer.run_action(tasks[1], 'restart')
+          local most_recent = tasks[1]
+          overseer.run_action(most_recent, "restart")
         end
       end,
       desc = '[O]verseer: Run [Last] Task',

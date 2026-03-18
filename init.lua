@@ -191,38 +191,8 @@ require('lazy').setup {
     },
   },
   require 'plugins.lsp.lspconfig',
+  require 'plugins.lsp.format',
   require 'plugins.lazy_dev',
-
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    lazy = false,
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
-    opts = {
-      notify_on_error = true,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-      },
-    },
-  },
 
   -- require 'plugins.cmp',
   require 'plugins.blink',
@@ -251,7 +221,7 @@ require('lazy').setup {
         enable = true,
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true},
+      indent = { enable = true },
       incremental_selection = {
         enable = true,
       },
@@ -281,7 +251,7 @@ require('lazy').setup {
   -- { dir = '~/code/gooscript/tree-sitter/', ft = 'gooscript' },
   -- { dir = '~/.config/nvim/gdshader/tree-sitter-gdshader/', opts = {}, lazy = false },
 
-  { 'wakatime/vim-wakatime',               event = 'BufEnter' },
+  { 'wakatime/vim-wakatime', event = 'BufEnter' },
   -- { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
 
   require 'plugins.mini',
@@ -313,6 +283,7 @@ require('lazy').setup {
     event = 'VeryLazy',
   },
   require 'plugins.snacks',
+  require 'plugins.lsp.hex'
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
