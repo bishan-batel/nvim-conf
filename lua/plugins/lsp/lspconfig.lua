@@ -8,7 +8,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       { 'smjonas/inc-rename.nvim', opts = {} },
       { 'SmiteshP/nvim-navic' },
@@ -115,6 +115,7 @@ return {
           cmd = { 'clangd', '--cross-file-rename', '--clang-tidy', '--background-index' },
           mason = false,
         },
+        glsl_analyzer = {},
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
@@ -162,7 +163,7 @@ return {
         -- `opts[server].capabilities, if you've defined it
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         vim.lsp.config(server, { flags = config });
-        vim.lsp.enable({server});
+        vim.lsp.enable({ server });
         -- require('lspconfig')[server].setup(config)
       end
 
